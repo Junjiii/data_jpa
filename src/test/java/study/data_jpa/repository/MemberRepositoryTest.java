@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-public class MemberReposiroryTest {
+public class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
 
@@ -51,6 +51,26 @@ public class MemberReposiroryTest {
         long deleteCount = memberRepository.count();
         assertThat(deleteCount).isEqualTo(0);
 
+    }
+
+    @Test
+    public void findByNameAndAgeGreaterThenTest() throws Exception
+    {
+        // given
+        Member member1 = new Member("member", 10);
+        Member member2 = new Member("member", 20);
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        // when
+        List<Member> members = memberRepository.findByUsernameAndAgeGreaterThan("member", 10);
+
+        System.out.println("member.name = " + members.get(0).getUsername() + ", member.age = " + members.get(0).getAge());
+
+        // then
+        assertThat(members.get(0).getUsername()).isEqualTo("member");
+        assertThat(members.get(0).getAge()).isEqualTo(20);
     }
 
 }
