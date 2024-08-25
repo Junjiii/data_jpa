@@ -8,6 +8,7 @@ import study.data_jpa.dto.MemberDto;
 import study.data_jpa.entity.Member;
 import study.data_jpa.entity.Team;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -110,8 +111,22 @@ public class MemberRepositoryTest {
         for (MemberDto dto : memberDto) {
             System.out.println("dto = " + dto);
         }
+    }
+    
+    @Test
+    public void findByNames() throws Exception
+    {
+        Member member1 = new Member("member1", 10);
+        Member member2 = new Member("member2", 20);
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
 
 
+        List<Member> byNames = memberRepository.findByNames(Arrays.asList("member1", "member2"));
+        for (Member byName : byNames) {
+            System.out.println("byName = " + byName);
+        }
     }
 
 }
