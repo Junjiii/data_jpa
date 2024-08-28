@@ -3,12 +3,14 @@ package study.data_jpa.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id","username","age"})
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue

@@ -280,4 +280,22 @@ public class MemberRepositoryTest {
 
     }
 
+    @Test
+    public void callCustom() throws Exception {
+        Member member1 = new Member("member1", 10);
+        Member member2 = new Member("member2", 10);
+        Member member3 = new Member("member3", 10);
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+        memberRepository.save(member3);
+
+
+        List<Member> memberCustom = memberRepository.findMemberCustom();
+        for (Member member : memberCustom) {
+            System.out.println("member = " + member);
+        }
+    }
+
+
+
 }
