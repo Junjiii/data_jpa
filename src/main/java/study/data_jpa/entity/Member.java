@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id","username","age"})
-public class Member extends BaseEntity {
+public class Member {
 
     @Id
     @GeneratedValue
