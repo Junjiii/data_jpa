@@ -277,6 +277,9 @@ public class MemberRepositoryTest {
         List<Member> result = memberRepository.findLockByUsername("member1");
 
         // then
+        for (Member member : result) {
+            System.out.println("member = " + member);
+        }
 
     }
 
